@@ -1,26 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from .models import Post
 
 
-posts = [
-    {
-        'author':'ritika',
-        'title': 'Blog_post_1',
-        'content': 'first post content',
-        'date_posted': '28 sept 2024'
-    },
-    {
-        'author':'prince',
-        'title': 'Blog_post_2',
-        'content': 'second post content',
-        'date_posted': '30 sept 2024'
-    }
-]
+
 def first_program(request):
     # template = loader.get_template("index.html")
     context = {
-        'content':posts
+        'content':Post.objects.all()
     }
     return render(request,'home.html',context)
 
